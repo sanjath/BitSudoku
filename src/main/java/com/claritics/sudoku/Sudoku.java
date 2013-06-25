@@ -130,7 +130,17 @@ public class Sudoku {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		Sudoku s;
+		try {
+			 s = new Sudoku(args[0]);
+			 s.validate();
+		} catch (Exception e) {
+			System.out.println("Error is validating the input file:"+e);
+			System.out.println("Usage: Sudoku <filepath>");
+			return;
+		}
+		int size = s.sqSize*s.sqSize;
+		System.out.println("Input file:"+args[0]+" has a valid sudoku values of "+size+"x" + size +" matrix");
 
 	}
 
