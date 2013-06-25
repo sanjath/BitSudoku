@@ -55,7 +55,7 @@ public class Sudoku {
 			String[] cells = lines.get(0).split(",");
 			sudokuSize = cells.length;
 			if (sudokuSize != lines.size()) {
-				// not a square, error
+				throw new Exception("Number of lines should match the number of columns in each line");
 			}
 			sqSize = (int) Math.sqrt(sudokuSize);
 			if (sqSize*sqSize != sudokuSize ) {
@@ -71,7 +71,9 @@ public class Sudoku {
 			validateLine(cells, 0);
 			for (int i=1; i<sudokuSize; i++) {
 				cells = lines.get(i).split(",");
-				validateLine(cells, i);
+				if (sudokuSize != cells.length) {
+					throw new Exception("Number of lines should match the number of columns in each line");
+				}				validateLine(cells, i);
 			}
 
 		} else {
